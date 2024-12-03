@@ -3,6 +3,7 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 const swaggerDocumentLocalhost = require('./swagger-output-localhost.json');
+const mongodb = require('./data/database')
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -22,7 +23,13 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+// Connect to database and start server
+mongodb.initDb((err) => {
+  if (err) {
+    console.error(err);
+  } else {
+    app.listen(PORT, () => {
+      console.log(`Database connected and server running on port ${PORT}`);
+    });
+  }
 });
