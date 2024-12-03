@@ -8,16 +8,5 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": ["http"],
-  "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    }
-  }
+  "paths": {}
 }

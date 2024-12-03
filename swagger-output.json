@@ -8,16 +8,5 @@
   "host": "cse341-artshop.onrender.com",
   "basePath": "/",
   "schemes": ["https"],
-  "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    }
-  }
+  "paths": {}
 }
