@@ -5,7 +5,7 @@
     "description": "Art Shop Public API",
     "version": "1.0.0"
   },
-  "host": "",
+  "host": "cse341-artshop.onrender.com",
   "basePath": "/",
   "schemes": ["https"],
   "paths": {

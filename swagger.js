@@ -23,7 +23,7 @@ const doc = {
     title: 'Art Shop API',
     description: 'Art Shop Public API'
   },
-  host: '',
+  host: 'cse341-artshop.onrender.com',
   schemes: ['https']
 };
 
