@@ -20,3 +20,4 @@ By Julio Reyes and Ryan Worsham
 - `npm run dev` - keeps server running continuously during development
 - `npm run lint` - runs eslint
 - `npm run format` - runs prettier
+- `npm run swagger` - updates swagger documentation
