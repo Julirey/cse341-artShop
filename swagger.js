@@ -19,15 +19,15 @@ swaggerAutogen(outputFileLocalhost, routesLocalhost, docLocalhost);
 
 // Swagger autogen for prod
 const doc = {
-    info: {
-      title: 'Art Shop API',
-      description: 'Art Shop Public API'
-    },
-    host: '',
-    schemes: ['https']
-  };
-  
-  const outputFile = './swagger-output.json';
-  const routes = ['./server.js'];
-  
-  swaggerAutogen(outputFile, routes, doc);
+  info: {
+    title: 'Art Shop API',
+    description: 'Art Shop Public API'
+  },
+  host: '',
+  schemes: ['https']
+};
+
+const outputFile = './swagger-output.json';
+const routes = ['./server.js'];
+
+swaggerAutogen(outputFile, routes, doc);

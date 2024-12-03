@@ -10,19 +10,19 @@ const PORT = process.env.PORT || 3000;
 
 // Swagger Middleware
 if (process.env.ENVIRONMENT == 'dev') {
-    app.use('/api-docs', swaggerUi.serve);
-    app.use('/api-docs', swaggerUi.setup(swaggerDocumentLocalhost));
+  app.use('/api-docs', swaggerUi.serve);
+  app.use('/api-docs', swaggerUi.setup(swaggerDocumentLocalhost));
 } else {
-    app.use('/api-docs', swaggerUi.serve);
-    app.use('/api-docs', swaggerUi.setup(swaggerDocument));
+  app.use('/api-docs', swaggerUi.serve);
+  app.use('/api-docs', swaggerUi.setup(swaggerDocument));
 }
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+  res.send('Hello World');
+});
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`)
-})
+  console.log(`Listening on port ${PORT}`);
+});
