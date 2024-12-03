@@ -1,2 +1,2 @@
 const router = require('express').Router();
-const sculpturesController = require('../controllers/sculpturesController')
+const sculpturesController = require('../controllers/sculpturesController');
