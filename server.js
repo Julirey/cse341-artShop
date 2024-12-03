@@ -19,9 +19,7 @@ if (process.env.ENVIRONMENT == 'dev') {
 }
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use('/', require('./routes'))
 
 // Connect to database and start server
 mongodb.initDb((err) => {
