@@ -14,9 +14,11 @@ router.get('/login', passport.authenticate('github'), () => {
 router.get('/logout', (req, res, next) => {
   // #swagger.ignore = true
   req.logout((err) => {
-    return next(err);
+    if (err) return next(err);
   });
   res.redirect('/');
 });
+
+router.get('/:id', userController.getById);
 
 module.exports = router;

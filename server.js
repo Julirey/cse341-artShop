@@ -17,6 +17,19 @@ const PORT = process.env.PORT || 3000;
 // Body-parser Middleware
 app.use(bodyParser.json());
 
+// Cors Middleware
+app.use((req, res, next) => {
+  res.setHeader('Access-Controll-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Controll-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
+  );
+  res.setHeader('Access-Controll-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE');
+  next();
+});
+app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
+app.use(cors({ origin: '*' }));
+
 // Swagger Middleware
 if (process.env.ENVIRONMENT == 'dev') {
   app.use('/api-docs', swaggerUi.serve);
@@ -57,6 +70,9 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+// Routes
+app.use('/', require('./routes'));
+
 app.get('/', (req, res) => {
   // #swagger.ignore = true
   res.send(
@@ -77,21 +93,10 @@ app.get(
   }
 );
 
-// Cors Middleware
-app.use((req, res, next) => {
-  res.setHeader('Access-Controll-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Controll-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
-  );
-  res.setHeader('Access-Controll-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE');
-  next();
+// Error handling
+process.on('uncaughtException', (err, origin) => {
+  console.log(process.stderr.fd, `Caught exception: ${err}/n Exception origin: ${origin}`);
 });
-app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
-app.use(cors({ origin: '*' }));
-
-// Routes
-app.use('/', require('./routes'));
 
 // Connect to database and start server
 mongodb.initDb((err) => {
