@@ -9,6 +9,7 @@ const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const userController = require('./controllers/userController');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -58,6 +59,7 @@ passport.use(
       callbackURL: process.env.CALLBACK_URL
     },
     function (accessToken, refreshToken, profile, done) {
+      userController.findOrCreate(profile._json);
       return done(null, profile);
     }
   )

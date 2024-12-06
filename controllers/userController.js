@@ -1,13 +1,35 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
+const findOrCreate = async (user) => {
+  // #swagger.ignore = true
+  const result = await mongodb.getDatabase().db().collection('user').find({ githubId: user.id });
+  const resultArray = await result.toArray();
+  if (resultArray.length == 0) {
+    let nameArray = user.name.split(' ');
+    let newUser = {
+      firstName: nameArray[0],
+      lastName: nameArray[1],
+      userName: user.login,
+      email: user.email,
+      githubId: user.id
+    };
+    const result = await mongodb.getDatabase().db().collection('user').insertOne(newUser);
+
+    if (!result.acknowledged) {
+      throw new Error('Some error occurred while creating the user');
+    }
+  }
+};
+
 const createUser = async (req, res) => {
   // #swagger.tags=['User']
   const user = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email
+    userName: req.body.userName,
+    email: req.body.email,
+    githubId: req.body.githubId
   };
 
   const result = await mongodb.getDatabase().db().collection('user').insertOne(user);
@@ -58,8 +80,9 @@ const updateUser = async (req, res) => {
   const user = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email
+    userName: req.body.userName,
+    email: req.body.email,
+    githubId: req.body.githubId
   };
 
   const result = await mongodb
@@ -91,6 +114,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+  findOrCreate,
   createUser,
   getAll,
   getById,

@@ -26,10 +26,13 @@
                 "lastName": {
                   "example": "any"
                 },
-                "phoneNumber": {
+                "userName": {
                   "example": "any"
                 },
                 "email": {
+                  "example": "any"
+                },
+                "githubId": {
                   "example": "any"
                 }
               }
@@ -107,10 +110,13 @@
                 "lastName": {
                   "example": "any"
                 },
-                "phoneNumber": {
+                "userName": {
                   "example": "any"
                 },
                 "email": {
+                  "example": "any"
+                },
+                "githubId": {
                   "example": "any"
                 }
               }
