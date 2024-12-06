@@ -17,5 +17,6 @@ router.get('/logout', (req, res, next) => {
 });
 router.get('/:id', userController.getById);
 router.put('/:id', auth.isAuthenticated, userController.updateUser);
+router.delete('/:id', auth.isAuthenticated, userController.deleteUser);
 
 module.exports = router;

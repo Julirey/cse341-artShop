@@ -75,9 +75,25 @@ const updateUser = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  // #swagger.tags=['User']
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Must use a valid user id to delete a user' });
+  }
+  const userId = new ObjectId(req.params.id);
+  const result = await mongodb.getDatabase().db().collection('user').deleteOne({ _id: userId });
+
+  if (result.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while deleting the user');
+  }
+};
+
 module.exports = {
   createUser,
   getAll,
   getById,
-  updateUser
+  updateUser,
+  deleteUser
 };
