@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
 const passport = require('passport');
+const auth = require('../middleware/authenticate');
 
-router.post('/', userController.createUser);
+router.post('/', auth.isAuthenticated, userController.createUser);
 
 router.get('/', userController.getAll);
 
