@@ -4,13 +4,18 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 const swaggerDocumentLocalhost = require('./swagger-output-localhost.json');
 const mongodb = require('./data/database');
-const passport = require('passport')
-const session = require('express-session')
-const GitHubStrategy = require('passport-github2').Strategy
+const passport = require('passport');
+const session = require('express-session');
+const GitHubStrategy = require('passport-github2').Strategy;
+const cors = require('cors');
+const bodyParser = require('body-parser')
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
+
+// Body-parser Middleware
+app.use(bodyParser.json())
 
 // Swagger Middleware
 if (process.env.ENVIRONMENT == 'dev') {
@@ -53,6 +58,7 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get('/', (req, res) => {
+  // #swagger.ignore = true
   res.send(
     req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : 'Logged Out'
   );
@@ -65,10 +71,24 @@ app.get(
     session: false
   }),
   (req, res) => {
+    // #swagger.ignore = true
     req.session.user = req.user;
     res.redirect('/');
   }
 );
+
+// Cors Middleware
+app.use((req, res, next) => {
+  res.setHeader('Access-Controll-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Controll-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization'
+  );
+  res.setHeader('Access-Controll-Allow-Methods', 'POST, GET, PUT, PATCH, OPTIONS, DELETE');
+  next();
+});
+app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
+app.use(cors({ origin: '*' }));
 
 // Routes
 app.use('/', require('./routes'));

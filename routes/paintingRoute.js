@@ -1,2 +1,4 @@
 const router = require('express').Router();
-const paintingsController = require('../controllers/paintingController');
+const paintingController = require('../controllers/paintingController');
+
+module.exports = router;

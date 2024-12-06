@@ -1,2 +1,4 @@
 const router = require('express').Router();
-const storesController = require('../controllers/storeController');
+const storeController = require('../controllers/storeController');
+
+module.exports = router;
