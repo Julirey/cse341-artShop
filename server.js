@@ -8,14 +8,14 @@ const passport = require('passport');
 const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
 // Body-parser Middleware
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Swagger Middleware
 if (process.env.ENVIRONMENT == 'dev') {
