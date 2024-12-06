@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const createUser = async (req, res) => {
-  //#swagger.tags=['User']
+  // #swagger.tags=['User']
   const user = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -22,7 +22,7 @@ const createUser = async (req, res) => {
 };
 
 const getAll = async (req, res) => {
-  //#swagger.tags=['User']
+  // #swagger.tags=['User']
   try {
     const result = await mongodb.getDatabase().db().collection('user').find();
     result.toArray().then((user) => {
@@ -34,7 +34,7 @@ const getAll = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-  //#swagger.tags=['User']
+  // #swagger.tags=['User']
   try {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).send({ message: 'Must use a valid user id to find a user' });
@@ -49,8 +49,35 @@ const getById = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  // #swagger.tags=['User']
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Must use a valid user id to update a user' });
+  }
+  const userId = new ObjectId(req.params.id);
+  const user = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    phoneNumber: req.body.phoneNumber,
+    email: req.body.email
+  };
+
+  const result = await mongodb
+    .getDatabase()
+    .db()
+    .collection('user')
+    .replaceOne({ _id: userId }, user);
+
+  if (result.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(result.error || 'Some error occurred while updating the user');
+  }
+};
+
 module.exports = {
   createUser,
   getAll,
-  getById
+  getById,
+  updateUser
 };

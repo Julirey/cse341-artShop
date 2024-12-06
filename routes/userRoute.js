@@ -4,13 +4,10 @@ const passport = require('passport');
 const auth = require('../middleware/authenticate');
 
 router.post('/', auth.isAuthenticated, userController.createUser);
-
 router.get('/', userController.getAll);
-
 router.get('/login', passport.authenticate('github'), () => {
   // #swagger.ignore = true
 });
-
 router.get('/logout', (req, res, next) => {
   // #swagger.ignore = true
   req.logout((err) => {
@@ -18,7 +15,7 @@ router.get('/logout', (req, res, next) => {
   });
   res.redirect('/');
 });
-
 router.get('/:id', userController.getById);
+router.put('/:id', auth.isAuthenticated, userController.updateUser);
 
 module.exports = router;
