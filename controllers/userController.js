@@ -27,9 +27,9 @@ const createUser = async (req, res) => {
   const user = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    userName: req.body.userName,
-    email: req.body.email,
-    githubId: req.body.githubId
+    userName: req.body.userName || null,
+    email: req.body.email || null,
+    githubId: req.body.githubId || null
   };
 
   const result = await mongodb.getDatabase().db().collection('user').insertOne(user);
@@ -80,9 +80,9 @@ const updateUser = async (req, res) => {
   const user = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    userName: req.body.userName,
-    email: req.body.email,
-    githubId: req.body.githubId
+    userName: req.body.userName || null,
+    email: req.body.email || null,
+    githubId: req.body.githubId || null
   };
 
   const result = await mongodb
