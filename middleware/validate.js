@@ -43,6 +43,6 @@ const updateUser = (req, res, next) => {
 };
 
 module.exports = {
-    createUser,
-    updateUser
+  createUser,
+  updateUser
 };
