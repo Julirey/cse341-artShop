@@ -3,6 +3,19 @@ const ObjectId = require('mongodb').ObjectId;
 
 const createPainting = async (req, res) => {
   // #swagger.tags=['Painting']
+  /*  #swagger.parameters['body'] = {
+            in: 'body',
+            schema: {
+                name: 'any',
+                artist: 'any',
+                price: 'any',
+                type: 'any',
+                year: 'any',
+                tags: [
+                    'any'
+                ]
+            }
+    } */
   const painting = {
     name: req.body.name,
     artist: req.body.artist,
@@ -83,6 +96,19 @@ const getByArtist = async (req, res) => {
 
 const updatePainting = async (req, res) => {
   // #swagger.tags=['Painting']
+  /*  #swagger.parameters['body'] = {
+            in: 'body',
+            schema: {
+                name: 'any',
+                artist: 'any',
+                price: 'any',
+                type: 'any',
+                year: 'any',
+                tags: [
+                    'any'
+                ]
+            }
+    } */
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Must use a valid painting id to update a painting' });
   }

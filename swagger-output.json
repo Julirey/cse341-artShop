@@ -21,22 +21,31 @@
               "type": "object",
               "properties": {
                 "name": {
+                  "type": "string",
                   "example": "any"
                 },
                 "artist": {
+                  "type": "string",
                   "example": "any"
                 },
                 "price": {
+                  "type": "string",
                   "example": "any"
                 },
                 "type": {
+                  "type": "string",
                   "example": "any"
                 },
                 "year": {
+                  "type": "string",
                   "example": "any"
                 },
                 "tags": {
-                  "example": "any"
+                  "type": "array",
+                  "example": ["any"],
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -111,22 +120,31 @@
               "type": "object",
               "properties": {
                 "name": {
+                  "type": "string",
                   "example": "any"
                 },
                 "artist": {
+                  "type": "string",
                   "example": "any"
                 },
                 "price": {
+                  "type": "string",
                   "example": "any"
                 },
                 "type": {
+                  "type": "string",
                   "example": "any"
                 },
                 "year": {
+                  "type": "string",
                   "example": "any"
                 },
                 "tags": {
-                  "example": "any"
+                  "type": "array",
+                  "example": ["any"],
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
