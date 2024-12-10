@@ -1,6 +1,6 @@
 const validator = require('../helpers/validate');
 
-const createUser = (req, res, next) => {
+const validateUser = (req, res, next) => {
   const validationRule = {
     firstName: 'required|string',
     lastName: 'required|string',
@@ -21,13 +21,14 @@ const createUser = (req, res, next) => {
   });
 };
 
-const updateUser = (req, res, next) => {
+const validatePainting = (req, res, next) => {
   const validationRule = {
-    firstName: 'required|string',
-    lastName: 'required|string',
-    userName: 'string',
-    email: 'email',
-    githubId: 'string'
+    name: 'required|string',
+    artist: 'required|string',
+    price: 'required|numeric',
+    type: 'required|string',
+    year: 'integer',
+    tags: 'array'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -43,6 +44,6 @@ const updateUser = (req, res, next) => {
 };
 
 module.exports = {
-  createUser,
-  updateUser
+  validateUser,
+  validatePainting
 };
