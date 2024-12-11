@@ -11,6 +11,7 @@ const createPainting = async (req, res) => {
                 price: 'any',
                 type: 'any',
                 year: 'any',
+                condition: 'any',
                 tags: [
                     'any'
                 ]
@@ -22,6 +23,7 @@ const createPainting = async (req, res) => {
     price: req.body.price,
     type: req.body.type,
     year: req.body.year || null,
+    condition: req.body.condition || null,
     tags: req.body.tags || null
   };
 
@@ -104,6 +106,7 @@ const updatePainting = async (req, res) => {
                 price: 'any',
                 type: 'any',
                 year: 'any',
+                condition: 'any',
                 tags: [
                     'any'
                 ]
@@ -119,6 +122,7 @@ const updatePainting = async (req, res) => {
     price: req.body.price,
     type: req.body.type,
     year: req.body.year || null,
+    condition: req.body.condition || null,
     tags: req.body.tags || null
   };
 
