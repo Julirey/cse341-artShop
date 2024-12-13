@@ -44,6 +44,10 @@
                   "type": "string",
                   "example": "any"
                 },
+                "condition": {
+                  "type": "string",
+                  "example": "any"
+                },
                 "tags": {
                   "type": "array",
                   "example": [
@@ -148,6 +152,10 @@
                   "example": "any"
                 },
                 "year": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "condition": {
                   "type": "string",
                   "example": "any"
                 },

@@ -28,6 +28,7 @@ const validatePainting = (req, res, next) => {
     price: 'required|numeric',
     type: 'required|string',
     year: 'integer',
+    condition: 'string',
     tags: 'array'
   };
   validator(req.body, validationRule, {}, (err, status) => {
