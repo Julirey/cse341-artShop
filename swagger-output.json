@@ -7,15 +7,11 @@
   },
   "host": "cse341-artshop.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/painting/": {
       "post": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -50,9 +46,7 @@
                 },
                 "tags": {
                   "type": "array",
-                  "example": [
-                    "any"
-                  ],
+                  "example": ["any"],
                   "items": {
                     "type": "string"
                   }
@@ -77,9 +71,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "responses": {
           "200": {
@@ -93,9 +85,7 @@
     },
     "/painting/{id}": {
       "get": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -118,9 +108,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -161,9 +149,7 @@
                 },
                 "tags": {
                   "type": "array",
-                  "example": [
-                    "any"
-                  ],
+                  "example": ["any"],
                   "items": {
                     "type": "string"
                   }
@@ -191,9 +177,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -221,9 +205,7 @@
     },
     "/painting/tag/{tag}": {
       "get": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -245,9 +227,7 @@
     },
     "/painting/artist/{artist}": {
       "get": {
-        "tags": [
-          "Painting"
-        ],
+        "tags": ["Painting"],
         "description": "",
         "parameters": [
           {
@@ -269,9 +249,7 @@
     },
     "/sculpture/": {
       "post": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "parameters": [
           {
@@ -320,9 +298,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "responses": {
           "200": {
@@ -336,13 +312,9 @@
     },
     "/sculpture/{id}": {
       "get": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -367,9 +339,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "parameters": [
           {
@@ -427,9 +397,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "parameters": [
           {
@@ -457,9 +425,7 @@
     },
     "/sculpture/artist/{artist}": {
       "get": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "parameters": [
           {
@@ -481,9 +447,7 @@
     },
     "/sculpture/material/{material}": {
       "get": {
-        "tags": [
-          "Sculpture"
-        ],
+        "tags": ["Sculpture"],
         "description": "",
         "parameters": [
           {
@@ -505,9 +469,7 @@
     },
     "/user/": {
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -551,9 +513,7 @@
         }
       },
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "responses": {
           "200": {
@@ -567,9 +527,7 @@
     },
     "/user/{id}": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -592,9 +550,7 @@
         }
       },
       "put": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -647,9 +603,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {

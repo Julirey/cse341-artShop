@@ -58,12 +58,12 @@ const getById = async (req, res) => {
       .find({ _id: sculptureId })
       .toArray();
 
-      if(!result[0]) {
-        return res.status(404).json('sculpture not found.');
-      }
-      
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(result[0]);
+    if (!result[0]) {
+      return res.status(404).json('sculpture not found.');
+    }
+
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(result[0]);
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -73,7 +73,11 @@ const getByArtist = async (req, res) => {
   // #swagger.tags=['Sculpture']
   try {
     const artist = req.params.artist;
-    const result = await mongodb.getDatabase().db().collection('sculpture').find({ artist: artist });
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('sculpture')
+      .find({ artist: artist });
     result.toArray().then((sculpture) => {
       res.status(200).json(sculpture);
     });
@@ -83,17 +87,21 @@ const getByArtist = async (req, res) => {
 };
 
 const getByMaterial = async (req, res) => {
-    // #swagger.tags=['Sculpture']
-    try {
-      const material = req.params.material;
-      const result = await mongodb.getDatabase().db().collection('sculpture').find({ material: material });
-      result.toArray().then((sculpture) => {
-        res.status(200).json(sculpture);
-      });
-    } catch (error) {
-      res.status(500).json({ message: error });
-    }
-  };
+  // #swagger.tags=['Sculpture']
+  try {
+    const material = req.params.material;
+    const result = await mongodb
+      .getDatabase()
+      .db()
+      .collection('sculpture')
+      .find({ material: material });
+    result.toArray().then((sculpture) => {
+      res.status(200).json(sculpture);
+    });
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+};
 
 const updateSculpture = async (req, res) => {
   // #swagger.tags=['Sculpture']

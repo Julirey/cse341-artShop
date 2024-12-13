@@ -50,7 +50,7 @@ const validateSculpture = (req, res, next) => {
     artist: 'required|string',
     price: 'required|numeric',
     material: 'required|string',
-    year: 'integer',
+    year: 'integer'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
