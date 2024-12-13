@@ -28,8 +28,28 @@ const validatePainting = (req, res, next) => {
     price: 'required|numeric',
     type: 'required|string',
     year: 'integer',
-    condition: 'string',
     tags: 'array'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).json({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const validateSculpture = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    artist: 'required|string',
+    price: 'required|numeric',
+    material: 'required|string',
+    year: 'integer',
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -46,5 +66,6 @@ const validatePainting = (req, res, next) => {
 
 module.exports = {
   validateUser,
-  validatePainting
+  validatePainting,
+  validateSculpture
 };
