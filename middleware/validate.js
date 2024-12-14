@@ -65,8 +65,29 @@ const validateSculpture = (req, res, next) => {
   });
 };
 
+const validateStore = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    itemType: 'required|in:painting,sculpture',
+    itemId: 'required|hex|size:24',
+    date: 'required|date',
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).json({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 module.exports = {
   validateUser,
   validatePainting,
-  validateSculpture
+  validateSculpture,
+  validateStore
 };

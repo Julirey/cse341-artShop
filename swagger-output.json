@@ -7,11 +7,15 @@
   },
   "host": "cse341-artshop.onrender.com",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/painting/": {
       "post": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -46,7 +50,9 @@
                 },
                 "tags": {
                   "type": "array",
-                  "example": ["any"],
+                  "example": [
+                    "any"
+                  ],
                   "items": {
                     "type": "string"
                   }
@@ -71,7 +77,9 @@
         }
       },
       "get": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -85,7 +93,9 @@
     },
     "/painting/{id}": {
       "get": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -108,7 +118,9 @@
         }
       },
       "put": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -149,7 +161,9 @@
                 },
                 "tags": {
                   "type": "array",
-                  "example": ["any"],
+                  "example": [
+                    "any"
+                  ],
                   "items": {
                     "type": "string"
                   }
@@ -177,7 +191,9 @@
         }
       },
       "delete": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -205,7 +221,9 @@
     },
     "/painting/tag/{tag}": {
       "get": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -227,7 +245,9 @@
     },
     "/painting/artist/{artist}": {
       "get": {
-        "tags": ["Painting"],
+        "tags": [
+          "Painting"
+        ],
         "description": "",
         "parameters": [
           {
@@ -249,7 +269,9 @@
     },
     "/sculpture/": {
       "post": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "parameters": [
           {
@@ -298,7 +320,9 @@
         }
       },
       "get": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -312,9 +336,13 @@
     },
     "/sculpture/{id}": {
       "get": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -339,7 +367,9 @@
         }
       },
       "put": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "parameters": [
           {
@@ -397,7 +427,9 @@
         }
       },
       "delete": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "parameters": [
           {
@@ -425,7 +457,9 @@
     },
     "/sculpture/artist/{artist}": {
       "get": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "parameters": [
           {
@@ -447,7 +481,9 @@
     },
     "/sculpture/material/{material}": {
       "get": {
-        "tags": ["Sculpture"],
+        "tags": [
+          "Sculpture"
+        ],
         "description": "",
         "parameters": [
           {
@@ -467,9 +503,215 @@
         }
       }
     },
+    "/store/": {
+      "post": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "itemType": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "itemId": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/store/{id}": {
+      "get": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "itemType": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "itemId": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/store/type/{type}": {
+      "get": {
+        "tags": [
+          "Store"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/user/": {
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -513,7 +755,9 @@
         }
       },
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -527,7 +771,9 @@
     },
     "/user/{id}": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -550,7 +796,9 @@
         }
       },
       "put": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
@@ -603,7 +851,9 @@
         }
       },
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "description": "",
         "parameters": [
           {
