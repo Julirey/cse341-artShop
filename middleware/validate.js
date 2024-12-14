@@ -44,6 +44,27 @@ const validatePainting = (req, res, next) => {
   });
 };
 
+const validateSculpture = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    artist: 'required|string',
+    price: 'required|numeric',
+    material: 'required|string',
+    year: 'integer'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).json({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 const validateStore = (req, res, next) => {
   const validationRule = {
     name: 'required|string',
@@ -67,5 +88,6 @@ const validateStore = (req, res, next) => {
 module.exports = {
   validateUser,
   validatePainting,
+  validateSculpture,
   validateStore
 };
