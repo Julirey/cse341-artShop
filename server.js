@@ -101,14 +101,17 @@ process.on('uncaughtException', (err, origin) => {
 });
 
 // Connect to database and start server
-mongodb.initDb((err) => {
-  if (err) {
-    console.error(err);
-  } else {
+const startServer = async () => {
+  try {
+    await mongodb.initDb();
     app.listen(PORT, () => {
       console.log(`Database connected and server running on port ${PORT}`);
     });
+  } catch (error) {
+    console.error('Error when starting server')
   }
-});
+}
+
+startServer()
 
 module.exports = app 
