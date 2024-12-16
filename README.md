@@ -21,3 +21,4 @@ By Julio Reyes and Ryan Worsham
 - `npm run lint` - runs eslint
 - `npm run format` - runs prettier
 - `npm run swagger` - updates swagger documentation
+- `npm run test` - runs unit tests (a "JEST" env variable must be created to work)
