@@ -104,9 +104,11 @@ process.on('uncaughtException', (err, origin) => {
 const startServer = async () => {
   try {
     await mongodb.initDb();
-    app.listen(PORT, () => {
-      console.log(`Database connected and server running on port ${PORT}`);
-    });
+    if (!process.env.JEST) {
+      app.listen(PORT, () => {
+        console.log(`Database connected and server running on port ${PORT}`);
+      });
+    }
   } catch (error) {
     console.error('Error when starting server')
   }
